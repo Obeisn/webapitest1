@@ -20,16 +20,16 @@
 <p>並加入</p>
 <ul>
     <li><a href="#">system.webServer</a></li>
-    <ul>
+   
     <li><a href="#">httpProtocol</a></li>
-         <ul>
+      
              <li><a href="#">customHeaders</a></li>
-             <ul>
+        
                 <li><a href="#">add name="Access-Control-Allow-Origin" value="*" /</a></li>
-                <li><a href="#">add name="Access-Control-Allow-Methods" value="GET, PUT, POST, DELETE, HEAD" /></a></li>
-                <li><a href="#">add name="Access-Control-Allow-Headers" value="Origin, X-Requested-With, Content-Type, Accept" /</a></li>
+                <li><a href="#">add name="Access-Control-Allow-Methods" value="GET, PUT, POST, DELETE, HEAD" /</a></li>
+              <li><a href="#">add name="Access-Control-Allow-Headers" value="Origin, X-Requested-With, Content-Type, Accept" /</a>                      </li>
 
-            </ul>
-         </ul>
-    </ul>   
+          
+        
+   
  </ul>
