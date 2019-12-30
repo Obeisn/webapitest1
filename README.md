@@ -16,7 +16,7 @@
             </path>
         </svg>使用'Content-Type': 'application/json'</br></h3>
 <p>options需先預檢請求</p>
-<p>webapi 需刪除<remove name="OPTIONSVerbHandler" /></p>
+<p>webapi 需刪除remove name="OPTIONSVerbHandler"</p>
 <p>並加入</p>
 <ul>
     <li><a href="#">system.webServer</a></li>   
