@@ -23,9 +23,21 @@
           <Property Name="content" Type="nvarchar(max)" />
           <Property Name="image" Type="nvarchar(max)" />
         </EntityType>
+        <EntityType Name="Sidebar">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="60" />
+          <Property Name="icon" Type="nvarchar" MaxLength="255" />
+          <Property Name="parentid" Type="int" />
+          <Property Name="link" Type="nvarchar" MaxLength="100" />
+          <Property Name="isdelete" Type="bit" />
+        </EntityType>
         <EntityContainer Name="RoyModelStoreContainer">
           <EntitySet Name="member" EntityType="Self.member" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sidebar" EntityType="Self.Sidebar" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -34,6 +46,7 @@
         <EntityContainer Name="NewsEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="News" EntityType="RoyModel.News" />
           <EntitySet Name="member" EntityType="RoyModel.member" />
+          <EntitySet Name="Sidebar" EntityType="RoyModel.Sidebar" />
         </EntityContainer>
         <EntityType Name="News">
           <Key>
@@ -52,6 +65,17 @@
           <Property Name="accont" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
           <Property Name="password" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="mail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Sidebar">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="icon" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="parentid" Type="Int32" />
+          <Property Name="link" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="isdelete" Type="Boolean" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -75,6 +99,18 @@
                 <ScalarProperty Name="mail" ColumnName="mail" />
                 <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="accont" ColumnName="accont" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sidebar">
+            <EntityTypeMapping TypeName="RoyModel.Sidebar">
+              <MappingFragment StoreEntitySet="Sidebar">
+                <ScalarProperty Name="isdelete" ColumnName="isdelete" />
+                <ScalarProperty Name="link" ColumnName="link" />
+                <ScalarProperty Name="parentid" ColumnName="parentid" />
+                <ScalarProperty Name="icon" ColumnName="icon" />
+                <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

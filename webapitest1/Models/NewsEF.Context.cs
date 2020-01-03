@@ -27,5 +27,6 @@ namespace webapitest1.Models
     
         public virtual DbSet<News> News { get; set; }
         public virtual DbSet<member> member { get; set; }
+        public virtual DbSet<Sidebar> Sidebar { get; set; }
     }
 }

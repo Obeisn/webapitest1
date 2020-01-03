@@ -35,10 +35,10 @@ namespace webapitest1.Controllers
             var value = new News();
             try
             {
-                var httpPostedFile = HttpContext.Current.Request.Files;               
+                var httpPostedFile = HttpContext.Current.Request.Files;
                 value.title = HttpContext.Current.Request.Form["title"];
                 value.content = HttpContext.Current.Request.Form["content"];
-                string FileName ="";
+                string FileName = "";
                 if (httpPostedFile != null && httpPostedFile.Count > 0)
                 {
                     var file = httpPostedFile[0];
@@ -59,9 +59,9 @@ namespace webapitest1.Controllers
                 {
                     return Request.CreateResponse(HttpStatusCode.NotFound, new HttpError("請上傳檔案!"));
                 }
-                value.image = FileName;     
+                value.image = FileName;
                 context.News.Add(value);
-                context.SaveChanges();                
+                context.SaveChanges();
             }
             catch (Exception ex)
             {
@@ -76,11 +76,11 @@ namespace webapitest1.Controllers
         {
             var value = new News();
 
-            value.id =  HttpContext.Current.Request.Form["id"] !=null?Convert.ToInt32(HttpContext.Current.Request.Form["id"]):0;
+            value.id = HttpContext.Current.Request.Form["id"] != null ? Convert.ToInt32(HttpContext.Current.Request.Form["id"]) : 0;
             var data = context.News.FirstOrDefault(p => p.id == value.id);
             value.title = HttpContext.Current.Request.Form["title"];
             value.content = HttpContext.Current.Request.Form["content"];
-            if (data == null || value.title==null || value.content==null)
+            if (data == null || value.title == null || value.content == null)
             {
                 return Request.CreateResponse(HttpStatusCode.NotFound, new HttpError("此筆資料不存在"));
             }
@@ -128,12 +128,28 @@ namespace webapitest1.Controllers
             var data = context.member.Where(p => p.accont == member.accont && p.password == member.password);
             if (data.Count() > 0)
             {
-                return Request.CreateResponse(HttpStatusCode.OK, new Message<object>(new { member=data.FirstOrDefault(), message = "成功!",status=1 }, statusEM.sucess));
+                return Request.CreateResponse(HttpStatusCode.OK, new { member = data.FirstOrDefault(), message = "成功!", status = true });
             }
-            else {
+            else
+            {
                 return Request.CreateResponse(HttpStatusCode.NotFound, new HttpError("登入失敗!"));
             }
         }
 
+        [HttpGet]
+        public IEnumerable<SubpartDTO> getSubpart(member member)
+        {
+            return (from q in context.Sidebar
+                    where q.parentid == null
+                    select new SubpartDTO
+                    {
+                        icon = q.icon,
+                        id = q.id,
+                        link = q.link,
+                        submenu = context.Sidebar.Where(p=>p.parentid==q.id).Select(p=> new { id=p.id, icon=p.icon, link=p.link, title=p.title }),
+                        title = q.title
+                    }
+                    );
+        }
     }
 }

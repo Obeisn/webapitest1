@@ -209,6 +209,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MemberController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\testAIGController.cs" />
     <Compile Include="Global.asax.cs">
@@ -301,6 +302,9 @@
     <Compile Include="Models\ScheduleRunLog.cs">
       <DependentUpon>AIGEF.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Sidebar.cs">
+      <DependentUpon>NewsEF.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\SidebarMain.cs">
       <DependentUpon>AIGEF.tt</DependentUpon>
     </Compile>
@@ -316,6 +320,7 @@
     <Compile Include="Models\sp_helpdiagrams_Result.cs">
       <DependentUpon>AIGEF.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SubpartDTO.cs" />
     <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>AIGEF.tt</DependentUpon>
     </Compile>
