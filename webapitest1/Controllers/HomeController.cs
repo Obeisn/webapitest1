@@ -26,5 +26,10 @@ namespace webapitest1.Controllers
 
             return View();
         }
+        public ActionResult GoHtml(string id,string xxx)
+        {
+            var url = Server.MapPath($"~/html/{id}.html");
+            return Content(System.IO.File.ReadAllText(url));
+        }
     }
 }

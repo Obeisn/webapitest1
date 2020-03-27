@@ -13,6 +13,13 @@ namespace webapitest1
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            //routes.RouteExistingFiles = false;
+            //routes.MapRoute(
+            // name: "Default2",
+            // url: "{id}/{*pathInfo}",
+            // defaults: new { controller = "Home", action = "GoHtml", id = UrlParameter.Optional }
+            //);
+
 
             routes.MapHttpRoute(
                 name: "DefaultApi",
